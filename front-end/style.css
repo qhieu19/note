@@ -41,7 +41,7 @@ body {
     background: var(--bg);
     display: flex;
     color: var(--text);
-    font-size: 13px;
+    font-size: 14px;
 }
 
 /* ════════════════════════
@@ -326,9 +326,9 @@ MAIN AREA
 }
 
 .page-title {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
 }
 
 .breadcrumb {
@@ -487,7 +487,7 @@ MAIN AREA
 .btn-primary:hover {
     background: #2f4dc7;
     transform: translateY(-1px);
-    box-shadow: 0 3px 12px rgba(59, 91, 219, 0.3);
+    box-shadow: 0 4px 14px rgba(59, 91, 219, 0.4);
 }
 
 /* ── CONTENT ── */
@@ -507,7 +507,7 @@ MAIN AREA
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: stretch;
-    padding: 0 20px;
+    padding: 0 24px;
     gap: 0;
 }
 
@@ -561,9 +561,9 @@ MAIN AREA
 }
 
 .stat-num {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
-    letter-spacing: -0.8px;
+    letter-spacing: -1px;
     line-height: 1;
 }
 
@@ -742,11 +742,11 @@ MAIN AREA
 }
 
 .k-col-name {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--text2);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
 }
 
 .k-col-n {
@@ -879,11 +879,11 @@ MAIN AREA
 }
 
 .card-title {
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--text);
-    margin-bottom: 9px;
+    margin-bottom: 10px;
 }
 
 /* Progress bar — thin, subtle */
