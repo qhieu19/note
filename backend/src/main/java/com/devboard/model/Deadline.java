@@ -1,7 +1,13 @@
 package com.devboard.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "deadlines")
 public class Deadline {
+    @Id
     private String id;
+
     private String title;
     private String category;
     private String day;

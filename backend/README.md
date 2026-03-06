@@ -33,7 +33,10 @@ When creating a new **Web Service** on Render, use these settings:
 4.  **Dockerfile Path**: `Dockerfile` 
     - *Since the Root Directory is set to `backend`, Render looks for the Dockerfile inside it.*
 5.  **Environment Variables**:
-    - `PORT`: `8080` (Render maps this automatically, but good to have).
+    - `PORT`: `8080`
+    - `DB_URL`: *Your Render PostgreSQL "Internal Database URL"*
+    - `DB_USER`: *Your PostgreSQL username*
+    - `DB_PASSWORD`: *Your PostgreSQL password*
 
 ### Manual Build (Local Testing)
 To test the Docker build locally:

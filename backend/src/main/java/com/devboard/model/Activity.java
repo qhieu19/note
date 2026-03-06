@@ -1,8 +1,14 @@
 package com.devboard.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "activities")
 public class Activity {
+    @Id
     private String id;
-    private String user;
+
+    private String userName; // Changed from 'user' to avoid reserved keyword issues
     private String action;
     private String timeLabel;
     private String color; // hex or CSS variable
@@ -10,9 +16,9 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(String id, String user, String action, String timeLabel, String color) {
+    public Activity(String id, String userName, String action, String timeLabel, String color) {
         this.id = id;
-        this.user = user;
+        this.userName = userName;
         this.action = action;
         this.timeLabel = timeLabel;
         this.color = color;
@@ -27,12 +33,12 @@ public class Activity {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getAction() {

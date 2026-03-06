@@ -4,6 +4,8 @@ The DevBoard application is now a **fully dynamic, full-stack application**! The
 
 ## 1. Production Backend
 The API is live at: `https://note-ol3j.onrender.com/api`
+- **persistence**: Integrated with **PostgreSQL** on Render using Spring Data JPA.
+- **Data Seeding**: Automatically seeds initial mock data onto the database if empty.
 - **Endpoints**: `/tasks`, `/dashboard/stats`, `/dashboard/activities`, `/dashboard/deadlines`.
 - **CORS**: Configured to allow all origins (`*`).
 
