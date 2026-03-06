@@ -142,26 +142,26 @@
       <!-- STATS BAR -->
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-ico" style="background:var(--blue-bg)">📋</div>
+          <div class="stat-ico" style="background:var(--blue-bg)">Σ</div>
           <div>
-            <div class="stat-num">48</div>
-            <div class="stat-lbl">Total</div>
+            <div class="stat-num" id="stat-total">0</div>
+            <div class="stat-lbl">Total Tasks</div>
           </div>
         </div>
 
         <div class="stat-item">
           <div class="stat-ico" style="background:var(--green-bg)">✓</div>
           <div>
-            <div class="stat-num" style="color:var(--green)">31</div>
+            <div class="stat-num" id="stat-done" style="color:var(--green)">0</div>
             <div class="stat-lbl">Done</div>
           </div>
-          <div class="stat-trend" style="color:var(--green)">↑64%</div>
+          <div class="stat-trend" style="color:var(--green)">↑0%</div>
         </div>
 
         <div class="stat-item">
           <div class="stat-ico" style="background:var(--blue-bg)">⟳</div>
           <div>
-            <div class="stat-num" style="color:var(--blue)">14</div>
+            <div class="stat-num" id="stat-active" style="color:var(--blue)">0</div>
             <div class="stat-lbl">Active</div>
           </div>
         </div>
@@ -169,10 +169,10 @@
         <div class="stat-item">
           <div class="stat-ico" style="background:var(--red-bg)">⚠</div>
           <div>
-            <div class="stat-num" style="color:var(--red)">3</div>
-            <div class="stat-lbl">Overdue</div>
+            <div class="stat-num" id="stat-urgent" style="color:var(--red)">0</div>
+            <div class="stat-lbl">Urgent</div>
           </div>
-          <div class="stat-trend" style="color:var(--red)">urgent</div>
+          <div class="stat-trend" style="color:var(--red)">high prio</div>
         </div>
 
         <div class="sprint-progress">
@@ -225,64 +225,11 @@
             <div class="k-col-head">
               <div class="k-col-dot" style="background:var(--text3)"></div>
               <div class="k-col-name">To Do</div>
-              <div class="k-col-n">5</div>
+              <div class="k-col-n" id="count-todo">0</div>
             </div>
-
-            <div class="task-card high">
-              <div class="card-actions">
-                <div class="ca-btn" title="Edit">✎</div>
-                <div class="ca-btn" title="Move">→</div>
-              </div>
-              <div class="card-tags">
-                <span class="tag sec">security</span>
-                <span class="tag be">backend</span>
-              </div>
-              <div class="card-title">Firebase JWT token verification in Spring Security</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:0%;background:var(--red)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date late">⏱ Mar 05 ⚠</div>
-                <div class="card-sub-count">☐ 0/5</div>
-              </div>
+            <div class="task-list" id="list-todo">
+              <!-- Tasks will be injected here -->
             </div>
-
-            <div class="task-card med">
-              <div class="card-actions">
-                <div class="ca-btn" title="Edit">✎</div>
-                <div class="ca-btn" title="Move">→</div>
-              </div>
-              <div class="card-tags">
-                <span class="tag ops">devops</span>
-              </div>
-              <div class="card-title">GitHub Actions CI/CD pipeline to Render</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:0%;background:var(--amber)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date">⏱ Mar 12</div>
-                <div class="card-sub-count">☐ 0/3</div>
-              </div>
-            </div>
-
-            <div class="task-card low">
-              <div class="card-actions">
-                <div class="ca-btn" title="Edit">✎</div>
-                <div class="ca-btn" title="Move">→</div>
-              </div>
-              <div class="card-tags">
-                <span class="tag test">testing</span>
-              </div>
-              <div class="card-title">Unit tests for Firestore repository layer</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:0%;background:var(--green)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date">⏱ Mar 15</div>
-                <div class="card-sub-count">☐ 0/4</div>
-              </div>
-            </div>
-
             <div class="add-task-btn">＋ Add task</div>
           </div>
 
@@ -291,64 +238,11 @@
             <div class="k-col-head">
               <div class="k-col-dot" style="background:var(--blue)"></div>
               <div class="k-col-name">In Progress</div>
-              <div class="k-col-n">4</div>
+              <div class="k-col-n" id="count-inprogress">0</div>
             </div>
-
-            <div class="task-card high">
-              <div class="card-actions">
-                <div class="ca-btn" title="Edit">✎</div>
-                <div class="ca-btn" title="Move">→</div>
-              </div>
-              <div class="card-tags">
-                <span class="tag be">backend</span>
-                <span class="tag fe">frontend</span>
-              </div>
-              <div class="card-title">REST API CRUD with Firestore integration</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:65%;background:var(--blue)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date">⏱ Mar 08</div>
-                <div class="card-sub-count">☑ 3/5</div>
-              </div>
+            <div class="task-list" id="list-inprogress">
+              <!-- Tasks will be injected here -->
             </div>
-
-            <div class="task-card med">
-              <div class="card-actions">
-                <div class="ca-btn" title="Edit">✎</div>
-                <div class="ca-btn" title="Move">→</div>
-              </div>
-              <div class="card-tags">
-                <span class="tag be">backend</span>
-              </div>
-              <div class="card-title">Global exception handler + validation layer</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:40%;background:var(--blue)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date">⏱ Mar 10</div>
-                <div class="card-sub-count">☑ 2/4</div>
-              </div>
-            </div>
-
-            <div class="task-card med">
-              <div class="card-actions">
-                <div class="ca-btn" title="Edit">✎</div>
-                <div class="ca-btn" title="Move">→</div>
-              </div>
-              <div class="card-tags">
-                <span class="tag fe">frontend</span>
-              </div>
-              <div class="card-title">Dashboard UI with Firebase Auth login flow</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:80%;background:var(--blue)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date">⏱ Mar 07</div>
-                <div class="card-sub-count">☑ 4/5</div>
-              </div>
-            </div>
-
             <div class="add-task-btn">＋ Add task</div>
           </div>
 
@@ -357,52 +251,10 @@
             <div class="k-col-head">
               <div class="k-col-dot" style="background:var(--green)"></div>
               <div class="k-col-name">Done</div>
-              <div class="k-col-n">8</div>
+              <div class="k-col-n" id="count-done">0</div>
             </div>
-
-            <div class="task-card done-card low">
-              <div class="card-actions">
-                <div class="ca-btn" title="Reopen">↺</div>
-              </div>
-              <div class="card-tags"><span class="tag be">backend</span></div>
-              <div class="card-title">Spring Boot project setup + Firebase Admin SDK</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:100%;background:var(--green)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date" style="color:var(--green)">✓ Mar 01</div>
-                <div class="card-sub-count">☑ 5/5</div>
-              </div>
-            </div>
-
-            <div class="task-card done-card low">
-              <div class="card-actions">
-                <div class="ca-btn" title="Reopen">↺</div>
-              </div>
-              <div class="card-tags"><span class="tag ops">devops</span></div>
-              <div class="card-title">Dockerfile for Spring Boot + Render deployment</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:100%;background:var(--green)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date" style="color:var(--green)">✓ Mar 02</div>
-                <div class="card-sub-count">☑ 3/3</div>
-              </div>
-            </div>
-
-            <div class="task-card done-card low">
-              <div class="card-actions">
-                <div class="ca-btn" title="Reopen">↺</div>
-              </div>
-              <div class="card-tags"><span class="tag fe">frontend</span></div>
-              <div class="card-title">Static HTML/CSS on GitHub Pages</div>
-              <div class="card-prog">
-                <div class="card-prog-fill" style="width:100%;background:var(--green)"></div>
-              </div>
-              <div class="card-foot">
-                <div class="card-date" style="color:var(--green)">✓ Feb 28</div>
-                <div class="card-sub-count">☑ 4/4</div>
-              </div>
+            <div class="task-list" id="list-done">
+              <!-- Tasks will be injected here -->
             </div>
           </div>
 

@@ -1,28 +1,33 @@
-# Walkthrough: High Readability & Minimal UI
+# Walkthrough: Full-Stack Connectivity
 
-I have significantly updated the DevBoard UI to be much easier to read at 100% zoom, adopting a focused and minimal aesthetic.
+The DevBoard application is now a fully connected full-stack application! The frontend now fetches and renders data dynamically from the Spring Boot backend.
 
-## Major UI Scalability Updates
+## 1. Backend API Layer
+I have implemented a clean, best-practice REST API:
+- **Endpoints**: 
+  - `GET /api/tasks`: Fetches all tasks.
+  - `GET /api/dashboard/stats`: Fetches live dashboard numbers (Total, Done, etc.).
+- **Architecture**: Separated into `Controller`, `Service`, and `Model` layers for maintainability.
 
-### 1. Global Readability
-- **Base Font Size**: Increased to **16px** (from 14px) for a comfortable reading experience.
-- **Sidebar & Icons**: Enlarged the sidebar icons (18px) and navigation items to match the new scale.
-- **Line Height**: Adjusted to **1.6** for better text flow across the application.
+## 2. Dynamic Frontend
+The frontend no longer uses hardcoded HTML for tasks:
+- **`script.js`**: Now includes an `async` fetch engine that pulls data from the backend on load.
+- **Dynamic Rendering**: Task cards are generated on-the-fly, supporting different priorities (High/Med/Low) and statuses (To Do/In Progress/Done).
+- **Live Stats**: The top-bar statistics are now live and reflect the actual data in the backend.
 
-### 2. Focused Task Cards
-- **Card Titles**: Increased to **18px** and made bolder for instant priority scanning.
-- **Card Padding**: Increased to **20px 24px**, giving the content significant "breathing room".
-- **Enhanced Tags**: Tags are now larger (12px) and more distinct.
-
-### 3. Minimalist & Spacious Layout
-- **Stats Bar**: Increased height and padding for a cleaner header feel.
-- **Kanban Columns**: Widened to a minimum of **320px** with a **24px gap**, ensuring tasks aren't cramped.
-- **Simplified Borders**: Softened the border colors and simplified contrasts to reduce visual noise and focus the user's eye on their work.
-
-## Verification
-- Open `index.html` in your browser.
-- You should notice that the text is significantly larger and the overall layout feels more open and "premium minimal".
+## 3. How to Verify
+1.  **Start the Backend**:
+    ```bash
+    cd backend
+    ./mvnw spring-boot:run
+    ```
+    *(Note: Use `mvn` if you have it installed globally, or the wrapper if provided).*
+2.  **Open the Frontend**:
+    - Open `front-end/index.html` in your browser.
+3.  **Observe**:
+    - You should see the 4 mock tasks I created in the backend service.
+    - The stats bar should show: **Total: 4**, **Done: 1**, **Active: 3**, **Urgent: 2**.
 
 ## Next Steps
-- Push these changes to GitHub to update your live site.
-- We are now ready to begin the Spring Boot backend setup whenever you wish!
+- We can now implement **Real-time Updates** (using polling or WebSockets).
+- Start the **Firebase Integration** to persist these tasks to a real database!
