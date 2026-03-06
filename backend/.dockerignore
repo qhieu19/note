@@ -1,0 +1,14 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/
+mvnw
+mvnw.cmd
+.gitignore
+Dockerfile
+.dockerignore
+.idea/
+.vscode/
+bin/

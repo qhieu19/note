@@ -3,19 +3,22 @@ const API_BASE_URL = 'http://localhost:8080/api';
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
     fetchDashboardData();
-    // Re-bind hover/click effects after potential dynamic loads
 });
 
 // --- API Fetching ---
 async function fetchDashboardData() {
     try {
-        const [tasks, stats] = await Promise.all([
+        const [tasks, stats, activities, deadlines] = await Promise.all([
             fetch(`${API_BASE_URL}/tasks`).then(res => res.json()),
-            fetch(`${API_BASE_URL}/dashboard/stats`).then(res => res.json())
+            fetch(`${API_BASE_URL}/dashboard/stats`).then(res => res.json()),
+            fetch(`${API_BASE_URL}/dashboard/activities`).then(res => res.json()),
+            fetch(`${API_BASE_URL}/dashboard/deadlines`).then(res => res.json())
         ]);
 
         renderStats(stats);
         renderTasks(tasks);
+        renderActivities(activities);
+        renderDeadlines(deadlines);
     } catch (err) {
         console.error('Failed to fetch dashboard data:', err);
     }
@@ -43,9 +46,8 @@ function renderTasks(tasks) {
     };
 
     // Clear current lists
-    Object.values(lists).forEach(list => list.innerHTML = '');
+    Object.values(lists).forEach(list => { if (list) list.innerHTML = ''; });
 
-    // Reset counts
     const statusCounts = { 'TODO': 0, 'IN_PROGRESS': 0, 'DONE': 0 };
 
     tasks.forEach(task => {
@@ -56,9 +58,8 @@ function renderTasks(tasks) {
         }
     });
 
-    // Update count labels
     Object.keys(counts).forEach(status => {
-        counts[status].textContent = statusCounts[status];
+        if (counts[status]) counts[status].textContent = statusCounts[status];
     });
 }
 
@@ -66,7 +67,6 @@ function createTaskCard(task) {
     const card = document.createElement('div');
     card.className = `task-card ${task.priority} ${task.status === 'DONE' ? 'done-card' : ''}`;
 
-    // Color mapping for priority icons/status
     const colorMap = { 'high': 'var(--red)', 'med': 'var(--amber)', 'low': 'var(--green)' };
     const color = colorMap[task.priority] || 'var(--blue)';
 
@@ -89,14 +89,45 @@ function createTaskCard(task) {
         </div>
     `;
 
-    // Add hover effect
     card.addEventListener('mouseenter', () => card.style.zIndex = 10);
     card.addEventListener('mouseleave', () => card.style.zIndex = '');
 
     return card;
 }
 
-// --- UI Interactions (Keep existing) ---
+function renderActivities(activities) {
+    const feed = document.getElementById('activity-feed');
+    if (!feed) return;
+    feed.innerHTML = activities.map(act => `
+        <div class="activity-item">
+            <div class="act-dot" style="background:${act.color}"></div>
+            <div class="act-content">
+                <div class="act-text"><strong>${act.user}</strong> ${act.action}</div>
+                <div class="act-time">${act.timeLabel}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderDeadlines(deadlines) {
+    const list = document.getElementById('deadline-list');
+    if (!list) return;
+    list.innerHTML = deadlines.map(dl => `
+        <div class="deadline-item">
+            <div class="dl-date-box ${dl.urgent ? 'urgent' : ''}">
+                <div class="dl-day">${dl.day}</div>
+                <div class="dl-mon">${dl.month}</div>
+            </div>
+            <div class="dl-info">
+                <div class="dl-name">${dl.title}</div>
+                <div class="dl-meta">${dl.category} · ${dl.timeLeft}</div>
+            </div>
+            <div class="dl-pri ${dl.priority}" style="background:var(--${dl.priority}-bg);color:var(--${dl.priority})">${dl.priority}</div>
+        </div>
+    `).join('');
+}
+
+// --- UI Interactions ---
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', () => {
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -117,8 +148,12 @@ tabs.forEach((tab, i) => {
     tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('on'));
         tab.classList.add('on');
-        Object.values(tabContents).forEach(id => document.getElementById(id).style.display = 'none');
-        document.getElementById(tabContents[i]).style.display = 'block';
+        Object.values(tabContents).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+        const target = document.getElementById(tabContents[i]);
+        if (target) target.style.display = 'block';
     });
 });
 
