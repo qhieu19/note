@@ -7,29 +7,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- API Fetching ---
 async function fetchDashboardData() {
+    console.log('--- DevBoard: Starting Data Fetch ---');
+    console.log('API Base:', API_BASE_URL);
+
     try {
+        const fetchWithError = async (url) => {
+            const res = await fetch(url);
+            if (!res.ok) {
+                console.error(`Fetch failed for: ${url}`, { status: res.status, ok: res.ok });
+                throw new Error(`HTTP ${res.status}`);
+            }
+            return res.json();
+        };
+
         const [tasks, stats, activities, deadlines] = await Promise.all([
-            fetch(`${API_BASE_URL}/tasks`).then(res => res.json()),
-            fetch(`${API_BASE_URL}/dashboard/stats`).then(res => res.json()),
-            fetch(`${API_BASE_URL}/dashboard/activities`).then(res => res.json()),
-            fetch(`${API_BASE_URL}/dashboard/deadlines`).then(res => res.json())
+            fetchWithError(`${API_BASE_URL}/tasks`),
+            fetchWithError(`${API_BASE_URL}/dashboard/stats`),
+            fetchWithError(`${API_BASE_URL}/dashboard/activities`),
+            fetchWithError(`${API_BASE_URL}/dashboard/deadlines`)
         ]);
 
+        console.log('Success! Data received:', { tasks, stats, activities, deadlines });
         renderStats(stats);
         renderTasks(tasks);
         renderActivities(activities);
         renderDeadlines(deadlines);
     } catch (err) {
-        console.error('Failed to fetch dashboard data:', err);
+        console.error('CRITICAL ERROR: Failed to load dashboard.', err);
+        alert('Could not connect to the backend. Please check the console (F12) for CORS or Network errors.\n\nNote: Render free tier may take 30s to wake up.');
     }
 }
 
 // --- Rendering ---
 function renderStats(stats) {
-    document.getElementById('stat-total').textContent = stats.totalTasks;
-    document.getElementById('stat-done').textContent = stats.completedTasks;
-    document.getElementById('stat-active').textContent = stats.activeTasks;
-    document.getElementById('stat-urgent').textContent = stats.urgentTasks;
+    if (!stats) return;
+    document.getElementById('stat-total').textContent = stats.totalTasks || 0;
+    document.getElementById('stat-done').textContent = stats.completedTasks || 0;
+    document.getElementById('stat-active').textContent = stats.activeTasks || 0;
+    document.getElementById('stat-urgent').textContent = stats.urgentTasks || 0;
 }
 
 function renderTasks(tasks) {
