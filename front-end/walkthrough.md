@@ -1,22 +1,28 @@
-# Walkthrough: UI Readability Enhancements
+# Walkthrough: High Readability & Minimal UI
 
-I have improved the DevBoard UI to be cleaner, more readable, and have a more premium feel.
+I have significantly updated the DevBoard UI to be much easier to read at 100% zoom, adopting a focused and minimal aesthetic.
 
-## Visual Improvements
+## Major UI Scalability Updates
 
-### 1. Enhanced Typography
-- **Base Font Size**: Increased from `13px` to `14px` for significantly better legibility.
-- **Titles & Headings**: Increased sizes across the board (e.g., Dashboard title from `15px` to `18px`).
-- **Task Cards**: Titles are now `14px` with improved line height (`1.5`) for better multi-line readability.
-- **Statistics**: Bolded and enlarged numerical values for better emphasis.
+### 1. Global Readability
+- **Base Font Size**: Increased to **16px** (from 14px) for a comfortable reading experience.
+- **Sidebar & Icons**: Enlarged the sidebar icons (18px) and navigation items to match the new scale.
+- **Line Height**: Adjusted to **1.6** for better text flow across the application.
 
-### 2. Spacing & Hierarchy
-- Increased horizontal padding in the stats bar and main areas to reduce visual clutter.
-- Refined shadow effects and hover transitions for a more interactive and premium feel.
+### 2. Focused Task Cards
+- **Card Titles**: Increased to **18px** and made bolder for instant priority scanning.
+- **Card Padding**: Increased to **20px 24px**, giving the content significant "breathing room".
+- **Enhanced Tags**: Tags are now larger (12px) and more distinct.
+
+### 3. Minimalist & Spacious Layout
+- **Stats Bar**: Increased height and padding for a cleaner header feel.
+- **Kanban Columns**: Widened to a minimum of **320px** with a **24px gap**, ensuring tasks aren't cramped.
+- **Simplified Borders**: Softened the border colors and simplified contrasts to reduce visual noise and focus the user's eye on their work.
 
 ## Verification
-- Open `index.html` in your browser to see the enhanced layout.
-- Notice the improved contrast and easier-to-read labels in both the sidebar and main content area.
+- Open `index.html` in your browser.
+- You should notice that the text is significantly larger and the overall layout feels more open and "premium minimal".
 
 ## Next Steps
-- Push the changes to GitHub to see them live on your GitHub Pages site.
+- Push these changes to GitHub to update your live site.
+- We are now ready to begin the Spring Boot backend setup whenever you wish!

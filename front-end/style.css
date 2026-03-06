@@ -3,8 +3,8 @@
     --surface: #ffffff;
     --surface2: #f0f1f7;
     --surface3: #e8eaf2;
-    --border: #e4e6f0;
-    --border2: #d0d3e8;
+    --border: #eaebf2;
+    --border2: #dadce8;
     --text: #111320;
     --text2: #535570;
     --text3: #9698b0;
@@ -20,8 +20,8 @@
     --purple-bg: #f3f0ff;
     --teal: #0891b2;
     --teal-bg: #ecfeff;
-    --sidebar-w: 52px;
-    --sidebar-expanded: 224px;
+    --sidebar-w: 64px;
+    --sidebar-expanded: 260px;
 }
 
 * {
@@ -41,7 +41,8 @@ body {
     background: var(--bg);
     display: flex;
     color: var(--text);
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 /* ════════════════════════
@@ -54,10 +55,10 @@ SIDEBAR — collapsed by default, expands on hover
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px 0;
+    padding: 16px 0;
     flex-shrink: 0;
     overflow: hidden;
-    transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 100;
 }
@@ -80,27 +81,27 @@ SIDEBAR — collapsed by default, expands on hover
 }
 
 .logo-box {
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     background: var(--blue);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Geist Mono', monospace;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
     color: white;
     flex-shrink: 0;
 }
 
 .logo-text {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--text);
     opacity: 0;
     transition: opacity 0.15s 0.05s;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.5px;
 }
 
 .logo-text span {
@@ -160,13 +161,13 @@ SIDEBAR — collapsed by default, expands on hover
 }
 
 .nav-item-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 7px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 18px;
     flex-shrink: 0;
     color: var(--text3);
     transition: color 0.12s;
@@ -326,9 +327,9 @@ MAIN AREA
 }
 
 .page-title {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.6px;
 }
 
 .breadcrumb {
@@ -507,7 +508,8 @@ MAIN AREA
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: stretch;
-    padding: 0 24px;
+    padding: 0 32px;
+    height: 72px;
     gap: 0;
 }
 
@@ -561,9 +563,9 @@ MAIN AREA
 }
 
 .stat-num {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -1px;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
     line-height: 1;
 }
 
@@ -705,9 +707,10 @@ MAIN AREA
 .kanban {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    padding: 14px;
+    grid-template-columns: repeat(3, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 24px;
+    overflow-x: auto;
     overflow-y: auto;
 }
 
@@ -760,10 +763,10 @@ MAIN AREA
 .task-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 11px 12px;
+    border-radius: 16px;
+    padding: 20px 24px;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
@@ -841,10 +844,10 @@ MAIN AREA
 }
 
 .tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
     font-family: 'Geist Mono', monospace;
 }
 
@@ -879,11 +882,12 @@ MAIN AREA
 }
 
 .card-title {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.5;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
     color: var(--text);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
 }
 
 /* Progress bar — thin, subtle */
